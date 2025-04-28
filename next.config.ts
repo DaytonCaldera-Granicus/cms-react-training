@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'i.annihil.us',
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
         port: '',
       },
     ],

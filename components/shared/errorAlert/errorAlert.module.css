@@ -1,0 +1,18 @@
+.card {
+    height: 8em;
+    width: 85%;
+    background-color: azure;
+    border-radius: 10px;
+    grid-column: span 10;
+    overflow: hidden;
+    display: flex;
+}
+
+.border-left {
+    background-color: tomato;
+    width: 5%;
+}
+.text-content {
+    width: 95%;
+    padding: 20px;
+}
