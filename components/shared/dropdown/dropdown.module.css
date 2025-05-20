@@ -1,0 +1,8 @@
+.dropdown {
+    width: 245px;
+    border: 2px solid #8B8B8B;
+    border-radius: 3px;
+    padding: 7;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+}
