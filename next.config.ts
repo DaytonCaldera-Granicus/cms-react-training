@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
         hostname: 'raw.githubusercontent.com',
         port: '',
       },
+      {
+        protocol: 'http',
+        hostname: 'i.annihil.us'
+      },
+      {
+        protocol: 'https',
+        hostname: 'comicvine.gamespot.com'
+      }
     ],
   },
 };

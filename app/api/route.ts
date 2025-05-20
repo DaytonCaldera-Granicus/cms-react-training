@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
     const queryParams = new URLSearchParams();
     queryParams.append('format', 'json')
     queryParams.append('api_key', API_KEY)
+    // queryParams.append('field_list', 'id,name,gender,origin,publisher')
     let endpoint = '';
     for (const [key, value] of req.nextUrl.searchParams.entries()) {
         if (key === 'endpoint') {

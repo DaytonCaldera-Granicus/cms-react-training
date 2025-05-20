@@ -13,7 +13,7 @@ export interface FilterValue {
 }
 
 interface FilterProps {
-    onChange: (filter: FilterValue) => void;
+    onChange?: (filter: FilterValue) => void;
 }
 
 const Filter = ({ onChange }: FilterProps) => {
@@ -65,7 +65,7 @@ const Filter = ({ onChange }: FilterProps) => {
                 <Input
                     // value={search}
                     onChange={handleInputChange}
-                    placeholder="Search..."
+                    placeholder="Type a name to search..."
                 />
             </div>
         </div>
