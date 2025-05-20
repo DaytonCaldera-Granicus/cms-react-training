@@ -1,0 +1,55 @@
+.announcement {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 670px;
+    margin-top: 115px;
+}
+
+.announcement h2 {
+    position: relative;
+    font-weight: 900;
+    color: #C24868;
+    font-size: 49px;
+    z-index: 0;
+}
+
+.announcement h2::before {
+    content: 'New Comics!';
+    position: absolute;
+    color: #F8F8F2;
+    text-shadow: 2px 2px 0 #222;
+    background-color: #9ECFC5;
+    transform: rotate(-5deg);
+    font-size: 18px;
+    top: -25;
+    left: -50;
+    padding: 10px 15px;
+    z-index: -5;
+}
+
+.announcement p {
+    letter-spacing: 0;
+    line-height: 32px;
+    font-size: 20px;
+    color: #222;
+}
+
+@media (max-width:768px) {
+    .announcement {
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .announcement h2 {
+        font-size: 25px;
+    }
+
+    .announcement h2::before{
+        font-size: 14px;
+        padding: 6px 14px;
+        top: -30;
+        left: -10;
+    }
+}
