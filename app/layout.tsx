@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat_Alternates, Karla } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, Karla } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const montserrat = Montserrat_Alternates({ weight: ['900', '700', '400'] })
+const montserrat = Montserrat({ weight: ['900', '700', '400'] })
 const karla = Karla({weight:['800','700','600','400']})
 
 export const metadata: Metadata = {
