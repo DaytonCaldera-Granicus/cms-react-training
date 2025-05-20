@@ -6,6 +6,7 @@ import { Character, CharacterDetailResponse, CharacterResponse } from '@/types/C
 import CharacterCard from '../character/character';
 import useApi from '@/hooks/useApi';
 import { characterStore } from '@/stores/characterStore';
+import Sidebar from '../sidebar/sidebar';
 
 const CharacterList = () => {
 
@@ -66,7 +67,7 @@ const CharacterList = () => {
                 </List>
             </div>
             <div className={styles.rightColumn}>
-                <h1>Here goes a sidebar</h1>
+                <Sidebar />
             </div>
         </div>
     )
