@@ -26,9 +26,7 @@ const Filter = ({ onChange }: FilterProps) => {
     const [gender, setGender] = useState<number>(0);
     const [search, setSearch] = useState<string>('');
 
-    // Call onChange whenever gender or search changes
     const handleChange = (newGender: number, newSearch: string) => {
-        console.log(newGender, newSearch);
         if (onChange) {
             onChange({ gender: newGender, search: newSearch });
         }
