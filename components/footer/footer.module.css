@@ -1,0 +1,27 @@
+.footer {
+    height: 268px;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    padding-top: 30px;
+    gap: 16px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer img {
+    margin-bottom: 10px;
+}
+
+.footer p span {
+    text-decoration: underline;
+}
+
+.footer p {
+    text-wrap: wrap;
+    text-align: center;
+    padding: 0 20px;
+}
