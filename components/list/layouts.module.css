@@ -16,7 +16,7 @@
     max-width: 265px;
 }
 
-.showSidebarButton{
+.showSidebarButton {
     display: none;
     position: absolute;
     right: 60px;
@@ -36,20 +36,42 @@
     display: block !important;
 }
 
+.hideFavorites {
+    position: absolute;
+    bottom: 0;
+    width: 265px;
+    height: 40px;
+    padding: 11px;
+    background-color: #C24868;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+}
+
 @media (max-width:1024px) {
-    .twoColumnLayout{
+    .twoColumnLayout {
         grid-template-columns: 1fr;
         padding: 80px 20px;
     }
+
     .rightColumn {
         display: none;
         position: absolute;
-        max-width: 335px; 
+        max-width: 335px;
         right: 20px;
         top: 140px;
         z-index: 30;
     }
-    .showSidebarButton{
+
+    .hideFavorites{
+        width: 335px;
+    }
+
+    .showSidebarButton {
         display: block;
     }
 }

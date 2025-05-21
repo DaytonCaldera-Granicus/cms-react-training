@@ -76,7 +76,7 @@ const CharacterList = () => {
 
     return (
         <div className={styles.twoColumnLayout}>
-            <button onClick={() => setShowSidebar(!showSidebar)} className={`${styles.showSidebarButton}`}>Show favorites &#9733;</button>
+            <button onClick={() => setShowSidebar(!showSidebar)} className={`${styles.showSidebarButton}`}>{(showSidebar) ? 'Hide' : 'Show'} favorites &#9733;</button>
             <div className={styles.leftColumn}>
                 <Filter onChange={handleFilterChange} />
                 {!loading && !error ? (
@@ -93,6 +93,7 @@ const CharacterList = () => {
             </div>
             <div className={`${styles.rightColumn} ${(showSidebar) ? styles.showSidebar : ''}`}>
                 <Sidebar />
+                <button onClick={() => setShowSidebar(!showSidebar)} className={`${styles.hideFavorites}`}>{(showSidebar) ? 'Hide' : 'Show'} favorites &#9733;</button>
             </div>
         </div>
     )
