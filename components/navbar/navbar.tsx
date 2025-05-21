@@ -2,9 +2,16 @@ import styles from './navbar.module.css'
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { characterStore } from '@/stores/characterStore';
+import { useEffect, useState } from 'react';
 
 
 const Navbar = () => {
+    const store = characterStore()
+    const [favorites, setFavorites] = useState(store.characters.length)
+    useEffect(()=>{
+        setFavorites(store.characters.length)
+    },[store.characters])
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
@@ -18,7 +25,7 @@ const Navbar = () => {
                 <a href="">
                     <span className={styles.icon}>&#9733;</span>
                     <span className={styles.text}>Favorites</span>
-                    <span>(3)</span>
+                    <span>{(favorites > 0) ? `(${favorites})`:''}</span>
                 </a>
             </div>
             <input type="checkbox" id="menu-toggle" className={styles.menuToggle} />
