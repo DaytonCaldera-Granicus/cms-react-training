@@ -48,6 +48,40 @@
 
 }
 
+.favorite {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.favorite button {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+    font-weight: 900;
+    color: #C24868;
+    background-color: #F8F8F2;
+    opacity: 0.8;
+}
+
+.favorite button:hover {
+    color: #C24868;
+    background-color: #F8F8F2;
+    opacity: 0.8;
+}
+
+.favorite_info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
 @media (max-width:768px) {
     .card {
         height: 188px;

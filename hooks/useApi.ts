@@ -17,12 +17,6 @@ function useApi<T = any>(options?: FetchOptions) {
         setError(null);
 
         const queryParams = new URLSearchParams();
-        for (const key in currentOptions) {
-            if (Object.prototype.hasOwnProperty.call(currentOptions, key)) {
-                const value = (currentOptions as any)[key];
-                queryParams.append(key, String(value));
-            }
-        }
 
 
 
@@ -38,6 +32,7 @@ function useApi<T = any>(options?: FetchOptions) {
             const response = await axios.get(`/api?${queryString}`);
             setData(response.data.response);
         } catch (error: any) {
+            console.error(error);
             const err = {
                 message: error.message,
                 status: error.code
