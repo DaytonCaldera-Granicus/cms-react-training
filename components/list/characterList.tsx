@@ -1,26 +1,33 @@
 import { ReactNode, useEffect, useState } from 'react';
 import styles from './layouts.module.css'
-import Filter from '../filter/filter';
+import Filter, { FilterValue } from '../filter/filter';
 import List from './list';
 import { Character, CharacterDetailResponse, CharacterResponse } from '@/types/Character';
 import CharacterCard from '../character/character';
 import useApi from '@/hooks/useApi';
 import { characterStore } from '@/stores/characterStore';
 import Sidebar from '../sidebar/sidebar';
+import ComicSpinner from '../shared/loadingSpinner/comicLoading';
+import Pager from '../pager/pager';
 
 const CharacterList = () => {
 
     const store = characterStore();
     const [characters, setCharacters] = useState<Character[]>([]);
     const [limit, setLimit] = useState(15);
+    const [prevOffset, setPrevOffset] = useState(0);
     const [offset, setOffset] = useState(0);
     const [filter, setFilter] = useState('');
-    const { data: fetchedCharacters } = useApi({ endpoint: 'characters', limit: limit, offset: offset })
+    const [total, setTotal] = useState(0);
+    const { data: fetchedCharacters, error, loading } = useApi({ endpoint: 'characters', limit: limit, offset: offset, filter: filter })
+    const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log(fetchedCharacters);
-
+        setTotal(0);
+        setTotal(0);
         if (fetchedCharacters && fetchedCharacters.results) {
+            setTotal(fetchedCharacters.number_of_total_results);
+            setOffset(fetchedCharacters.offset)
             const mappedCharacters = (fetchedCharacters.results).map((character: CharacterDetailResponse) => {
                 return {
                     id: character.id,
@@ -41,32 +48,50 @@ const CharacterList = () => {
         store.addCharacter(character);
     }
 
-    useEffect(() => {
-        console.log(store.characters);
-    }, [store.characters])
-    const handleFilterChange = (newFilter: string) => {
-        setFilter(newFilter);
+
+    const handleFilterChange = (newFilter: FilterValue) => {
+        const urlFilter = Object.entries(newFilter)
+            .filter(([_, value]) => value !== undefined && value !== '')
+            .map(([key, value]) => `${key}:${String(value)}`)
+            .join(',');
+        console.log(urlFilter.toString());
+
+        setFilter(urlFilter.toString());
     }
-    const handleLimitChange = (newLimit: number) => {
-        setLimit(newLimit);
+
+    const handlePrev = () => {
+        if (offset > 0) {
+            setPrevOffset(offset);
+            setOffset(offset - limit);
+        }
     }
-    const handleOffsetChange = (newOffset: number) => {
-        setOffset(newOffset);
+
+    const handleNext = () => {
+        setOffset(offset + limit)
+        if (offset + limit < total) {
+            setPrevOffset(offset);
+            setOffset(offset + limit);
+        }
     }
-    const handleSortChange = (newSort: string) => {
-        console.log('sort changed', newSort);
-    }
+
     return (
         <div className={styles.twoColumnLayout}>
+            <button onClick={() => setShowSidebar(!showSidebar)} className={`${styles.showSidebarButton}`}>Show favorites &#9733;</button>
             <div className={styles.leftColumn}>
-                <Filter />
-                <List>
-                    {characters.map((character) => (
-                        <CharacterCard character={character} key={character.id} addToFavorites={() => addToFavorites(character)} />
-                    ))}
-                </List>
+                <Filter onChange={handleFilterChange} />
+                {!loading && !error ? (
+                    <>
+                        <List>
+                            {characters.map((character) => (
+                                <CharacterCard character={character} key={character.id} addToFavorites={() => addToFavorites(character)} />
+                            ))}
+                        </List>
+                        <Pager start={offset + 1} end={offset + limit} total={total} onNext={handleNext} onPrev={handlePrev} />
+                    </>
+                ) : (loading) ? (<ComicSpinner />) : (<></>)}
+
             </div>
-            <div className={styles.rightColumn}>
+            <div className={`${styles.rightColumn} ${(showSidebar) ? styles.showSidebar : ''}`}>
                 <Sidebar />
             </div>
         </div>

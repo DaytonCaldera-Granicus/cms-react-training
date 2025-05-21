@@ -13,3 +13,9 @@
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 10px;
 }
+
+@media (max-width:768px) {
+    .sidebar {
+        width: 335px;
+    }
+}

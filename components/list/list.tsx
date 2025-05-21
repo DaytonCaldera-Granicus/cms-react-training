@@ -1,7 +1,4 @@
-import { Character } from '@/types/Character';
 import styles from './list.module.css'
-import CharacterCard from '../character/character';
-import { useStore } from '@/stores/characterStore';
 
 
 export interface ListProp {

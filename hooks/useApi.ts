@@ -5,6 +5,7 @@ export interface FetchOptions {
     endpoint: string;
     limit: number;
     offset: number;
+    filter?: string;
 }
 
 function useApi<T = any>(options?: FetchOptions) {

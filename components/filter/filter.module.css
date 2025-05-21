@@ -9,10 +9,51 @@
     justify-content: flex-start;
     align-items: center;
     font-weight: 700;
+    position: relative;
+}
+
+.filter p button {
+    display: none;
+    background-color: transparent;
+    color: #F8F8F2;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
 }
 
 .filters_container {
+    background-color: #222;
     display: flex;
     flex-direction: row;
     gap: 20px;
+}
+
+.displayMobileFilters {
+    display: flex;
+}
+
+.hideMobileFilters {
+    display: none;
+}
+
+@media (max-width:830px) {
+    .filters_container {
+        position: absolute;
+        top: 59px;
+        left: 0px;
+        padding: 20px;
+        max-width: 335px;
+        z-index: 50;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .filter p span {
+        display: none;
+    }
+
+    .filter p button {
+        display: inline;
+    }
+
 }
